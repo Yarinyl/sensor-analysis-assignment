@@ -1,9 +1,8 @@
 # Stop Sign Annotation Protocol
 ## Introduction:
-Hello and thank you for contributing to our labeling effort.
-Thanks to you, we will be able to predict more precisely the likelihood of an accident to occur and hopefully give the drivers tools to avoid them.
+Hello, and thank you for contributing to our labeling effort. Your work will help us build models that more accurately estimate the likelihood of accidents and, ultimately, provide drivers with tools to prevent them. 
 
-The goal is to label dashcam videos to capture how drivers behave when approaching, stopping at, and leaving stop signs.
+The objective of this task is to annotate dashcam videos to capture how drivers behave when approaching, stopping at, and departing from stop signs.
 
 ## Data:
 You will be given one short (35–45 seconds) video taken from a car dashboard. The video has no sound, and there is not any additional meta-data available to you during the annotation.
@@ -39,4 +38,5 @@ For each video your task is to determine the following features **regarding the 
 ## Explanation:
 The labeling scheme provides structured supervision by capturing both driver actions (e.g., full stop, stop location) and contextual conditions (e.g., traffic, visibility).
 This design reduces annotation noise, ensures consistency across annotators, and equips the model to learn fine-grained behavioral cues, enabling training an effective model to analyze driver behavior around stop
+
 signs.
