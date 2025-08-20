@@ -5,18 +5,22 @@ Hello, and thank you for contributing to our labeling effort. Your work will hel
 The objective of this task is to annotate dashcam videos to capture how drivers behave when approaching, stopping at, and departing from stop signs.
 
 ## Data:
-You will be given one short (35–45 seconds) video taken from a car dashboard. The video has no sound, and there is not any additional meta-data available to you during the annotation.
-Each video consists of an interaction of the driver with a stop sign, thus including at least 5 seconds before arriving at the stop sign as well as after passing it.
+You will be given a set of short (35–45 seconds) videos taken from car dashboards. The videos are soundless, and there are not additional meta-data available to you during the annotation.
+Each video consists of an interaction of the driver with a stop sign, including at least 5 seconds before arriving at the stop sign as well as after passing it.
 
 ## Your Task:
-For each video your task is to determine the following features **regarding the ego-vehicle (the car with the dashcam)**:
+For each video your task is to annotate the following features **regarding the ego-vehicle (i.e., the car with the dashcam)**:
 - StopSignCheck: Yes / No - Whether video includes an interaction with a stop sign.
 - StopSignVisible: Yes / No - Whether the stop sign was visible (or obstructed in any way).
+- StopSigneTime: Time in seconds - The first second of the footage that the stop sign is visible.
 - StoppedFully: Yes / No - Whether the driver comes to a complete halt (0 motion for ≥2 sec).
+- StoppingTime: Time in seconds - The first second of the footage that the car comes to a complete halt after seeing the stop sign.
+- StopDuration: Time in seconds - The duration of halting after seeing the stop sign.
 - StopLocation: Before line / On line / Past line - Where the driver stops regarding the line of the stop sign.
 - OtherVehiclesPresent: Yes / No - Whether there were other vehicles stoping before the driver reached the stop sign (which makes him stop).
 - PedestriansPresent: Yes / No - Whether there were pedestrians passing before the driver reached the stop sign (which makes him stop).
 - Lighting: Day / Night / Dusk-Dawn - What was the lighting condition in the scene.
+- Weather: Clear / Rain / Fog / Snow - What was the weather condition in the scene.
 
 ## General Guidelines:
 - It is recommended to watch the video at least twice when determining the value of the labels. You can slow down the playing speed if needed.
@@ -29,14 +33,15 @@ For each video your task is to determine the following features **regarding the 
 # Additional information (not part of the protocol)
 
 ## Assumptions or Tradeoffs:
+- Assumed that some videos may not contain a stop sign, due to misclassification in the previous preprocessing step.
+- Assumed that videos that do contain a stop sign are assumed to include at least five seconds of footage prior to reaching the stop sign and at least five seconds after the vehicle has passed it.
 - Assumed a “complete stop” is defined as 0 motion for ≥2 seconds.
-- Assumes other drivers’ actions are irrelevant unless they influence context.
-- Assumes only the first stop sign is relevant in multi-sign intersections.
+- Assumed other drivers’ actions are irrelevant unless they influence context.
+- Assumed only the first stop sign is relevant in multi-sign intersections.
 - Tradeoff - By including a larger set of features rather than fewer, we aim to capture richer training signals, though at the cost of slower annotation speed.
-- Tradeoff - By defin stop (≥2s = full stop) we ensure consistency but can misclassify borderline cases.
+- Tradeoff - By defining a stop as 0 motion for ≥2 seconds, we ensure consistency but may misclassify borderline cases.
 
 ## Explanation:
 The labeling scheme provides structured supervision by capturing both driver actions (e.g., full stop, stop location) and contextual conditions (e.g., traffic, visibility).
-This design reduces annotation noise, ensures consistency across annotators, and equips the model to learn fine-grained behavioral cues, enabling training an effective model to analyze driver behavior around stop
+This design reduces annotation noise, ensures consistency across annotators, and equips the model to learn fine-grained behavioral cues, enabling training an effective model to analyze driver behavior around stop signs.
 
-signs.
